@@ -24,8 +24,7 @@ public class TripService {
     }
 
     public Trip create(Trip trip) {
-        if (trip.getStartDate().after(trip.getEndDate()))
-        {
+        if (trip.getStartDate().after(trip.getEndDate())) {
             throw new BadRequestException("Start date is after end date!");
         }
         return tripRepository.save(trip);

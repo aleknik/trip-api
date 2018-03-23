@@ -1,6 +1,5 @@
 package com.aleknik.tripapi.controller.exception;
 
-
 /**
  * Custom exception.
  * Gets mapped to {@link org.springframework.http.HttpStatus#BAD_REQUEST} when caught in
