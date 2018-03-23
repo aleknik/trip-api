@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:db
+    driverClassName: org.h2.Driver
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: H2
+    show_sql: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+google-api-key: AIzaSyCVDeyhzg9gtmod_aIS1MJpanM8eu9QS_M
