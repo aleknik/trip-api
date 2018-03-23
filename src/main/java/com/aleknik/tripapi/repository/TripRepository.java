@@ -12,4 +12,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     Optional<Trip> findById(long id);
 
     List<Trip> findAllByStartDateAfter(Date date);
+
+    List<Trip> findAllByDestination(String destination);
 }

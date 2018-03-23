@@ -38,4 +38,9 @@ public class TripController {
     public ResponseEntity findFutureTrips() {
         return ResponseEntity.ok(tripService.findFutureTrips());
     }
+
+    @GetMapping("/trips/destination")
+    public ResponseEntity findFutureTrips(@RequestParam String name) {
+        return ResponseEntity.ok(tripService.findByDestination(name));
+    }
 }

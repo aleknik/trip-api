@@ -53,4 +53,8 @@ public class TripService {
 
         return futureTrips;
     }
+
+    public List<Trip> findByDestination(String destination) {
+        return tripRepository.findAllByDestination(destination);
+    }
 }
