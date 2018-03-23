@@ -1,12 +1,17 @@
 package com.aleknik.tripapi.service;
 
+import com.aleknik.tripapi.controller.exception.BadRequestException;
 import com.aleknik.tripapi.controller.exception.NotFoundException;
 import com.aleknik.tripapi.model.domain.Trip;
 import com.aleknik.tripapi.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class TripService {
@@ -18,12 +23,34 @@ public class TripService {
         this.tripRepository = tripRepository;
     }
 
-    public Trip create(Trip trip){
+    public Trip create(Trip trip) {
+        if (trip.getStartDate().after(trip.getEndDate()))
+        {
+            throw new BadRequestException("Start date is after end date!");
+        }
         return tripRepository.save(trip);
     }
 
-    public Trip findById(Long id){
+    public Trip findById(Long id) {
         return tripRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("No trip with ID %s found!", id)));
+    }
+
+    public List<Trip> findFutureTrips() {
+        final Date curr = new Date();
+        final List<Trip> futureTrips = tripRepository.findAllByStartDateAfter(curr);
+
+        final LocalDateTime currentDate = LocalDateTime.ofInstant(curr.toInstant(), ZoneId.systemDefault());
+        futureTrips.sort((o1, o2) -> {
+            final LocalDateTime start1 = LocalDateTime.ofInstant(o1.getStartDate().toInstant(), ZoneId.systemDefault());
+            long days1 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start1.toLocalDate());
+
+            final LocalDateTime start2 = LocalDateTime.ofInstant(o2.getStartDate().toInstant(), ZoneId.systemDefault());
+            long days2 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start2.toLocalDate());
+
+            return Long.compare(days1, days2);
+        });
+
+        return futureTrips;
     }
 }
