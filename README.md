@@ -12,11 +12,11 @@ Java 8 is required.
 
 ### Running the apllication
 
-- Run with `gradlew bootRun` command
+- Run with `gradlew bootRun` command.
 
 ### Running tests
 
-- Run with `gradlew test` command
+- Run with `gradlew test` command.
 
 ### Swagger api specification
 
