@@ -1,4 +1,4 @@
-# trip-api
+# Trip Rest API
 
 Codetribe Konteh 2018 task.
 
