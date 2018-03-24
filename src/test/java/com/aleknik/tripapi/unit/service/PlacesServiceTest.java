@@ -41,7 +41,6 @@ public class PlacesServiceTest {
         placesService.checkIfLocationExists("test");
     }
 
-
     @Test(expected = BadRequestException.class)
     public void checkIfLocationExistsShouldThrowExceptionIfLocationDoesNotExists() {
         // Arrange
