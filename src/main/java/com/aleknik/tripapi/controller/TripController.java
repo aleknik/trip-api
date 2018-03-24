@@ -37,7 +37,7 @@ public class TripController {
     }
 
     @GetMapping("/trips/{id}")
-    public ResponseEntity create(@PathVariable Long id) {
+    public ResponseEntity findById(@PathVariable Long id) {
         return ResponseEntity.ok(tripService.findById(id));
     }
 
@@ -47,7 +47,7 @@ public class TripController {
     }
 
     @GetMapping("/trips/destination")
-    public ResponseEntity findFutureTrips(@RequestParam String name) {
+    public ResponseEntity findByDestination(@RequestParam String name) {
         return ResponseEntity.ok(tripService.findByDestination(name));
     }
 }

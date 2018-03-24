@@ -22,6 +22,13 @@ public class TripCreateDto {
     public TripCreateDto() {
     }
 
+    public TripCreateDto(@NotEmpty String destination, @NotNull Date startDate, @NotNull Date endDate, String comment) {
+        this.destination = destination;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.comment = comment;
+    }
+
     public Trip createTrip() {
         return new Trip(destination, startDate, endDate, comment);
     }
