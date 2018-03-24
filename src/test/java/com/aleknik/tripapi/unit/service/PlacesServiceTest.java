@@ -32,7 +32,7 @@ public class PlacesServiceTest {
     public void checkIfLocationExistsShouldNotThrowExceptionIfLocationExists() {
         // Arrange
         final PlacesResponseDto dto = new PlacesResponseDto(PlacesResponseDto.OK);
-        ResponseEntity<PlacesResponseDto> entity = new ResponseEntity<>(dto, null, HttpStatus.OK);
+        final ResponseEntity<PlacesResponseDto> entity = new ResponseEntity<>(dto, null, HttpStatus.OK);
 
         when(restTemplateMock.exchange(any(URI.class), any(HttpMethod.class),
                 any(HttpEntity.class), eq(PlacesResponseDto.class))).thenReturn(entity);
@@ -45,7 +45,7 @@ public class PlacesServiceTest {
     public void checkIfLocationExistsShouldThrowExceptionIfLocationDoesNotExists() {
         // Arrange
         final PlacesResponseDto dto = new PlacesResponseDto(PlacesResponseDto.ZERO_RESULTS);
-        ResponseEntity<PlacesResponseDto> entity = new ResponseEntity<>(dto, null, HttpStatus.OK);
+        final ResponseEntity<PlacesResponseDto> entity = new ResponseEntity<>(dto, null, HttpStatus.OK);
 
         when(restTemplateMock.exchange(any(URI.class), any(HttpMethod.class),
                 any(HttpEntity.class), eq(PlacesResponseDto.class))).thenReturn(entity);

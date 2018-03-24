@@ -56,10 +56,10 @@ public class TripService {
         final LocalDateTime currentDate = LocalDateTime.ofInstant(curr.toInstant(), ZoneId.systemDefault());
         futureTrips.sort((o1, o2) -> {
             final LocalDateTime start1 = LocalDateTime.ofInstant(o1.getStartDate().toInstant(), ZoneId.systemDefault());
-            long days1 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start1.toLocalDate());
+            final long days1 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start1.toLocalDate());
 
             final LocalDateTime start2 = LocalDateTime.ofInstant(o2.getStartDate().toInstant(), ZoneId.systemDefault());
-            long days2 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start2.toLocalDate());
+            final long days2 = ChronoUnit.DAYS.between(currentDate.toLocalDate(), start2.toLocalDate());
 
             return Long.compare(days1, days2);
         });

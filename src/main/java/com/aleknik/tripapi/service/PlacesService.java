@@ -36,16 +36,16 @@ public class PlacesService {
      * @param location Location name
      */
     public void checkIfLocationExists(String location) {
-        HttpHeaders headers = new HttpHeaders();
+        final HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(PLACES_API)
                 .queryParam("query", location)
                 .queryParam("key", key);
 
-        HttpEntity<?> entity = new HttpEntity<>(headers);
+        final HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        HttpEntity<PlacesResponseDto> response = restTemplate.exchange(
+        final HttpEntity<PlacesResponseDto> response = restTemplate.exchange(
                 builder.build().encode().toUri(),
                 HttpMethod.GET,
                 entity,

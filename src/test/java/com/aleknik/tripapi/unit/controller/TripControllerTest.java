@@ -55,7 +55,7 @@ public class TripControllerTest {
         final String json = JsonUtil.json(new TripCreateDto("a", new Date(), new Date(), "a"));
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 post("/api/trips")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
@@ -71,7 +71,7 @@ public class TripControllerTest {
         final String json = JsonUtil.json(new TripCreateDto(null, new Date(), new Date(), "a"));
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 post("/api/trips")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
@@ -88,7 +88,7 @@ public class TripControllerTest {
         final String json = JsonUtil.json(new TripCreateDto("a", new Date(), new Date(), "a"));
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 post("/api/trips")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
@@ -105,7 +105,7 @@ public class TripControllerTest {
                 .willReturn(new Trip());
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 get("/api/trips/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
@@ -121,7 +121,7 @@ public class TripControllerTest {
                 .willThrow(new NotFoundException());
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 get("/api/trips/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
@@ -137,7 +137,7 @@ public class TripControllerTest {
                 .willReturn(new ArrayList<>());
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 get("/api/trips/future-trips")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
@@ -153,7 +153,7 @@ public class TripControllerTest {
                 .willReturn(new ArrayList<>());
 
         // Act
-        MockHttpServletResponse response = mvc.perform(
+        final MockHttpServletResponse response = mvc.perform(
                 get("/api/trips/destination")
                         .param("name", "test")
                         .accept(MediaType.APPLICATION_JSON))
