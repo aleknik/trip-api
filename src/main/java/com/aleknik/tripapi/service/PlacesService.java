@@ -2,6 +2,7 @@ package com.aleknik.tripapi.service;
 
 import com.aleknik.tripapi.controller.exception.BadRequestException;
 import com.aleknik.tripapi.model.dto.PlacesResponseDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,9 +20,14 @@ public class PlacesService {
 
     private static final String PLACES_API = "https://maps.googleapis.com/maps/api/place/textsearch/json";
 
-    public void checkIfLocationExists(String location) {
-        RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
+    @Autowired
+    public PlacesService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public void checkIfLocationExists(String location) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
 

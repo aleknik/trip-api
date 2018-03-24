@@ -1,5 +1,6 @@
 package com.aleknik.tripapi.controller.exception.resolver;
 
+import com.aleknik.tripapi.controller.exception.BadRequestException;
 import com.aleknik.tripapi.controller.exception.NotFoundException;
 import com.aleknik.tripapi.model.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,11 @@ public class ExceptionResolver {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity notFoundException(NotFoundException exception) {
         return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity badRequestException(BadRequestException exception) {
+        return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 }
 
