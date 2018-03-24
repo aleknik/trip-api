@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Service layer for communicating with Google Places api.
+ */
 @Service
 public class PlacesService {
 
@@ -27,6 +30,11 @@ public class PlacesService {
         this.restTemplate = restTemplate;
     }
 
+    /**
+     * Check if location exists
+     *
+     * @param location Location name
+     */
     public void checkIfLocationExists(String location) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);

@@ -1,0 +1,9 @@
+com.aleknik.tripapi
+com.aleknik.tripapi.config
+com.aleknik.tripapi.controller
+com.aleknik.tripapi.controller.exception
+com.aleknik.tripapi.controller.exception.resolver
+com.aleknik.tripapi.model.domain
+com.aleknik.tripapi.model.dto
+com.aleknik.tripapi.repository
+com.aleknik.tripapi.service

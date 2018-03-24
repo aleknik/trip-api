@@ -20,6 +20,10 @@ Java 8 is required.
 
 ### Swagger api specification
 
-- After running the application swagger api specification is available.
+- After running the application swagger api specification will be available.
 -   Swagger UI endpoint: http://localhost:8080/swagger-ui.html
 - Swagger docs endpoint: http://localhost:8080/v2/api-docs
+
+### Documentation
+
+- Documentation can be found [here](/docs).

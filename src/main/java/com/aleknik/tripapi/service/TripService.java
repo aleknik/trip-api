@@ -13,6 +13,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Service layer for trips' business logic.
+ */
 @Service
 public class TripService {
 
@@ -30,11 +33,22 @@ public class TripService {
         return tripRepository.save(trip);
     }
 
+    /**
+     * Find trip by ID.
+     *
+     * @param id Trip ID
+     * @return Trip matching id
+     */
     public Trip findById(Long id) {
         return tripRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("No trip with ID %s found!", id)));
     }
 
+    /**
+     * Find future trips.
+     *
+     * @return Sorted list of future trips
+     */
     public List<Trip> findFutureTrips() {
         final Date curr = new Date();
         final List<Trip> futureTrips = tripRepository.findAllByStartDateAfter(curr);
@@ -53,6 +67,12 @@ public class TripService {
         return futureTrips;
     }
 
+    /**
+     * Find trips by destination.
+     *
+     * @param destination Destination name
+     * @return List of trips with matching destination name
+     */
     public List<Trip> findByDestination(String destination) {
         return tripRepository.findAllByDestination(destination);
     }
